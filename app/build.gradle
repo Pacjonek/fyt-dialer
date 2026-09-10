@@ -5,12 +5,39 @@ plugins {
 android {
     namespace = "com.pacjonek.fytdialer"
     compileSdk = 37
+
     defaultConfig {
         applicationId "com.pacjonek.fytdialer"
         targetSdk = 33
         minSdk = 29
         versionCode = 1
         versionName = "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            if (System.getenv("KEYSTORE_FILE") != null) {
+                storeFile = file(System.getenv("KEYSTORE_FILE"))
+                storePassword = System.getenv("PATRYK_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("PATRYK_KEY_ALIAS")
+                keyPassword = System.getenv("PATRYK_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            if (System.getenv("KEYSTORE_FILE") != null) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 }
 
