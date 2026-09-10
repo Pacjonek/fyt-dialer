@@ -1,0 +1,19 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace = "com.pacjonek.fytdialer"
+    compileSdk = 37
+    defaultConfig {
+        applicationId "com.pacjonek.fytdialer"
+        targetSdk = 33
+        minSdk = 29
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+}
+
+dependencies {
+    implementation project(':fyttoys')
+}

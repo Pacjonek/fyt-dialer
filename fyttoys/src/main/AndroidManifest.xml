@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 11+ package visibility: allow binding to the FYT main server. -->
+    <queries>
+        <package android:name="com.syu.ms" />
+    </queries>
+
+</manifest>

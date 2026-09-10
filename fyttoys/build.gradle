@@ -1,0 +1,25 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    namespace = 'com.pacjonek.fyttoys'
+    compileSdk = 37
+
+    defaultConfig {
+        targetSdk = 33
+        minSdk = 29
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    lint {
+        targetSdk = 33
+    }
+    testOptions {
+        targetSdk = 33
+    }
+}
