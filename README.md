@@ -11,10 +11,10 @@ Below is an example of making a voice call using Google Gemini:
 ## Architecture
 My goal was to separate the library layer from the app layer so that the client wouldn’t see the “hard” low-level binder logic, and I managed to achieve that (“facade architecture”):
 ```kotlin
-   val module = BluetoothModule.get(context)
-   module.dialNumber("+48123456789") { success ->
-     Log.d(TAG,"Connection successful: $success")
-     module.disconnect()
+ val fytModule = BluetoothModule.get(context)
+ fytModule.dialNumber("+48123456789") { success ->
+   Log.d(TAG,"Connection successful: $success")
+   fytModule.disconnect()
  }
  ```
 However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
