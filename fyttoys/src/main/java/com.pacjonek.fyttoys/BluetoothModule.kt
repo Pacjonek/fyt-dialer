@@ -19,12 +19,12 @@ import com.pacjonek.fyttoys.internal.ipc.IRemoteToolkit
  * internally by [ToolkitConnection] (service plumbing) and [FytBtAdapter]
  * (protocol).
  *
- * Typical usage from an Activity:
+ * Typical usage from an Android Activity:
  * ```
  * val module = BluetoothModule.get(context)
  * module.dialNumber("+48123456789") { success ->
- *     module.close()
- *     finish()
+ *     Log.d(TAG,"Connection successful:  $success")
+ *     module.disconnect()
  * }
  * ```
  *
