@@ -13,11 +13,11 @@ My goal was to separate the library layer from the app layer so that the client 
 ```kotlin
  * val module = BluetoothModule.get(context)
  * module.dialNumber("+48123456789") { success ->
- *     Log.d(TAG,"Connection successful: $success")
- *     module.disconnect()
+ *   Log.d(TAG,"Connection successful: $success")
+ *   module.disconnect()
  * }
- * ```
-however, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
+ ```
+However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
 
 Tips: 
 Update-type codes (e.g., `U_PHONE_NAME`) must be implemented as observers even if the value is retrieved only once. Values that can be retrieved using `get` are prefixed with `G_...`, so in practice, in the case of the Bluetooth module, there are no such commands at all (or at least `com.fyt.bt` doesn’t use any);
