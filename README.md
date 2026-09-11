@@ -1,9 +1,8 @@
 # FYT Dialer Role redirecting app
-Android dialer role app for FYT-series head units (like DUDU7 with UIS7870/UIS7862 SoC).
+Android dialer role app for FYT-series head units (like Dudu Auto with UIS7870/UIS7862 SoC).
 
-Redirect the standard Android invoked dial requests to the in-build `com.syu.bt` Bluetooth app which initiate Bluetooth HFP calls via connected phone.
+Redirects the standard Android invoked dial requests to the in-build `com.syu.bt` Bluetooth app which initiate the Bluetooth HFP call (`cmd 7 strs=[phoneNumber]`)
 
-It pretends to Android that it’s making a standard call from the device SIM card, then immediately silently terminates that call and redirect recipient phone number to FYT Bt module: executes the `cmd 7 strs=[phoneNumber]` on it. 
 
 Below is an example of making a voice call using Google Gemini:
 <video src="https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb" width=1800 height=1800><video>
