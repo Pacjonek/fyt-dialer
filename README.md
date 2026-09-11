@@ -5,7 +5,7 @@ Redirects the standard Android invoked dial requests to the in-build `com.syu.bt
 
 
 Below is an example of making a voice call using Google Gemini:
-<video src="https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb" width=1800 height=1800><video>
+https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb
 
 ## Architecture
 My goal was to separate the library layer from the app layer so that the client wouldn’t see the “hard” low-level binder logic, and I managed to achieve that (“facade architecture”):
