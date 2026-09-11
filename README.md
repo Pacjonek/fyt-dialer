@@ -5,6 +5,7 @@ Redirects the standard Android invoked dial requests to the in-build `com.syu.bt
 
 
 Below is an example of making a voice call using Google Gemini:
+<video src="https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb"></video>
 https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb
 
 ## Architecture
