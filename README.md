@@ -20,11 +20,11 @@ My goal was to separate the library layer from the app layer so that the client 
 However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
 
 ### Command types: 
-**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading values from this type of codes must be implemented as observer even if you want to retrieve value only once.
+**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as observer even if you want to retrieve value only once.
 
-**Get codes** (`G_...`; no know example for Bluetooth module),
+**Get codes** (prefix `G_...`) - no know examples for Bluetooth module,
 
-**Command codes** (`C` like `C_DIAL`) - commands changing module state, doing some action.
+**Command codes** (prefix `C` like `C_DIAL`) - commands changing module state, doing some action.
 
 ### Protip about encryption
 Dudu firmware uses Tencent Legu encryption in its APKs so static analyse it's not easy in that case, it's better to decompile (to analyse) firmwares from other FYT-based manufacturers
