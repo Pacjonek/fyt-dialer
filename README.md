@@ -19,8 +19,12 @@ My goal was to separate the library layer from the app layer so that the client 
  ```
 However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
 
-Tips: 
-Update-type codes (e.g., `U_PHONE_NAME`) must be implemented as observers even if the value is retrieved only once. Values that can be retrieved using `get` are prefixed with `G_...`, so in practice, in the case of the Bluetooth module, there are no such commands at all (or at least `com.fyt.bt` doesn’t use any);
-`CMD_`- type codes are commands that typically perform an action on the device or change states.
-Dudu firmware uses Tencent Legu encryption in its APKs so static analyse it's not easy hrere, that's why it's better to analyse firmware from other FYT-based manufacturers that doesn't use it, it's analyse is much simpler 
+### Command types: 
+**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading values from this type of codes must be implemented as observer even if you want to retrieve value only once.
 
+**Get codes** (`G_...`; no know example for Bluetooth module),
+
+**Command codes** (`C` like `C_DIAL`) - commands changing module state, doing some action.
+
+### Protip about encryption
+Dudu firmware uses Tencent Legu encryption in its APKs so static analyse it's not easy in that case, it's better to decompile (to analyse) firmwares from other FYT-based manufacturers
