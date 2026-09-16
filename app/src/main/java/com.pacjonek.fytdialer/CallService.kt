@@ -29,7 +29,7 @@ class CallService : InCallService() {
     }
 
     companion object {
-        private const val TAG = "FytCallService"
+        private const val TAG = "CallService"
 
         fun dialUsingBluetoothHfp(context: Context, phoneNumber: String){
             val bluetoothModule = BluetoothModule.get(context)
