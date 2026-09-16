@@ -1,7 +1,7 @@
+# fyt-dialer 
+Android dialer role app for FYT-series head units (like DUDU Auto with UIS7870/UIS7862S SoC).
 
-Android dialer role app for FYT-series head units (like DUDU Auto with UIS7870/UIS7862 SoC).
-
-Redirects the standard Android-invoked dial requests to the Bluetooth module(there are two Bluetooth modules in these devices; we're referring here to the one that handles HFP headsets) and the system-installed `com.syu.bt` app, which initiates the  call using your connected smartphone using the `cmd 7 strs=[phoneNumber]` command
+Redirects the standard Android-invoked dial requests to the Bluetooth module (in fact, there are two Bluetooth modules in these devices; we're referring here to the non-Android one that handles HFP headsets) and the system-installed `com.syu.bt` app, which initiates the  call using your connected smartphone using the `cmd 7 strs=[phoneNumber]` command
 
 
 Below is an example of making a voice call using Google Gemini:
