@@ -13,7 +13,7 @@ My goal was to separate the library layer from the app layer so that the client 
 ```kotlin
  val fytModule = BluetoothModule.get(context)
  fytModule.dialNumber("+48123456789") { success ->
-   Log.d(TAG,"Connection successful: $success")
+   Log.d("MyDialer","Dial request status: $success")
    fytModule.disconnect()
  }
  ```
