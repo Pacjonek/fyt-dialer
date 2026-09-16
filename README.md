@@ -1,14 +1,14 @@
-# FYT Dialer Role redirecting app
+
 Android dialer role app for FYT-series head units (like Dudu Auto with UIS7870/UIS7862 SoC).
 
-Redirects the standard Android invoked dial requests to the in-build `com.syu.bt` Bluetooth app which initiate the Bluetooth HFP call (`cmd 7 strs=[phoneNumber]`)
+Redirects the standard Android-invoked dial requests to the Bluetooth module(there are two Bluetooth in these devices; we're referring here to the one that handles HFP headsets) and system installed com.syu.bt app, which initiates the  call using your connected smartphone using `cmd 7 strs=[phoneNumber]` command
 
 
 Below is an example of making a voice call using Google Gemini:
 <video src="https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb"></video>
 https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb
 
-## Architecture
+## Code architecture
 My goal was to separate the library layer from the app layer so that the client wouldn’t see the “hard” low-level binder logic, and I managed to achieve that (“facade architecture”):
 ```kotlin
  val fytModule = BluetoothModule.get(context)
@@ -19,12 +19,14 @@ My goal was to separate the library layer from the app layer so that the client 
  ```
 However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
 
-### Command types: 
-**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as observer even if you want to retrieve value only once.
+## Communication using Binders in FYT-based units
 
-**Get codes** (prefix `G_...`) - no know examples for Bluetooth module,
+### Code types: 
+**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as an observer even if you want to retrieve the value only once.
+
+**Get codes** (prefix `G_...`) - no known examples for Bluetooth module,
 
 **Command codes** (prefix `C` like `C_DIAL`) - commands changing module state, doing some action.
 
-### Protip about encryption
-Dudu firmware uses Tencent Legu encryption in its APKs so static analyse it's not easy in that case, it's better to decompile (to analyse) firmwares from other FYT-based manufacturers
+### Code reversing 
+Dudu firmware uses Tencent Legu encryption in its APKs, so static analyse it's not easy in that case; it's better to decompile (to analyse) firmwares from other FYT-based manufacturers
