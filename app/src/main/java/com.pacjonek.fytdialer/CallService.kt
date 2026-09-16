@@ -8,7 +8,7 @@ import android.widget.Toast
 import com.pacjonek.fyttoys.BluetoothModule
 
 /**
- * System apps are able to dial skipping dialer activity, just using this service
+ * System apps can dial, skipping the dialer activity, just using this service
  */
 class CallService : InCallService() {
     override fun onCallAdded(call: Call) {
