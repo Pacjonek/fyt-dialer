@@ -19,16 +19,19 @@ My goal was to separate the library layer from the app layer so that the client 
  }
  ```
 However, the library part is certainly far from optimal, and I’d like to rewrite it in the future. 
-Beware: Kotlin isn't my first-choice language (or even my second), and I've never used low-level Binders either, so the code may be far from perfect. 
+Beware: Kotlin isn't my first-choice language (or even my second), and I've never used low-level Binders either so the code may be far from perfect. 
 
-### IPC communication
+### IPC communication overview 
 `Android <-> Binders (cmd/update/get/...) <-> FYT modules (BT/Radio/Canbus/...)`
-#### Codes: 
-**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as an observer even if you want to retrieve the value only once.
+#### Module protocol: 
+**Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as an observer even if you want to retrieve the value only once,
 
 **Get codes** (prefix `G_...`) - no known examples for the Bluetooth module,
 
 **Command codes** (prefix `C` like `C_DIAL`) - commands changing module state, doing some action.
 
+
+*Codes reference*: Decompiled APKs (mostly `com.syu` id family).
+
 ### Code reversing 
-DUDU firmware uses Tencent Legu encryption in its APKs, so static analyse it's not easy in that case; it's better to decompile (to analyse) firmware from other FYT-based manufacturers
+DUDU firmware uses Tencent Legu encryption in its APKs, so statically analyzing it's not easy in that case; it's better to decompile (to analyse) firmware from other FYT-based manufacturers
