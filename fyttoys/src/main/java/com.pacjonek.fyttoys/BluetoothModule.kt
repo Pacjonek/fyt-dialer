@@ -129,8 +129,8 @@ class BluetoothModule private constructor(appContext: Context) {
 
     private fun addPhoneNameUpdateObserver(request: PendingPhoneName, toolkit: IRemoteToolkit) {
         /**
-         * Single-phone: strs[0] = name;
-         * "Dual-phone" (whatever that means): strs[0] = phone index, strs[1] = name.
+         * Single-phone: `strs[0] = name`;
+         * "Dual-phone" (whatever that means; probably dual-sim): `strs[0] = phone index, strs[1] = name`;
          */
         fun parsePhoneName(strs: Array<String?>?): String? {
             if (strs.isNullOrEmpty()) return null
