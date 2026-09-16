@@ -22,19 +22,19 @@ class MainActivity : Activity() {
         if (defaultDialer) {
             val message = "Already set as the default Android dialer, nothing to do"
             Log.d(TAG, message)
-            Toast.makeText(this, "✅ $message. You might hide this app icon", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "✅ $message. You might hide this app icon from the launcher drawer.", Toast.LENGTH_LONG).show()
             finish()
             return
         }
         if(isSyuMsAvailable(this)){
             Toast.makeText(this, "SyuMs service detected so it's probably FYT head unit", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(this, "⛔ I don't see SyuMs service. It looks like not FYT head unit. Exiting...", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "⛔ I don't see SyuMs service. It looks like it's not the FYT-based head unit. Exiting...", Toast.LENGTH_LONG).show()
             finish()
             return
         }
         if(!requestDefaultDialerRole()) {
-            val message = "Cannot request the default dialer role"
+            val message = "Cannot request the system default dialer role"
             Log.w(TAG, message)
             Toast.makeText(applicationContext, "⛔ Error: $message. Closing...", Toast.LENGTH_LONG).show()
             finish()
@@ -80,15 +80,15 @@ class MainActivity : Activity() {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d(TAG, "Role request finished, default dialer now: ${isDefaultDialer()}")
         if(isDefaultDialer()){
-            Toast.makeText(applicationContext, "✅ The role obtained successfully. You can hide this launcher shortcut", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "✅ The system dialer role obtained successfully. You can hide this icon from the launcher drawer.", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(applicationContext, "⛔ Error. This app require default dialer role. Set in manually in Android settings", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "⛔ Error. This app requires the system dialer role. Set in manually in the Android settings", Toast.LENGTH_LONG).show()
         }
         finish()
     }
 
     companion object {
-        private const val TAG = "FytDialerMainActivity"
+        private const val TAG = "MainActivity"
         private const val REQUEST_ROLE = 1
     }
 }
