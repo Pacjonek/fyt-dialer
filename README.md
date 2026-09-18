@@ -26,12 +26,12 @@ Beware: Kotlin isn't my first-choice language (or even my second), and I've neve
 #### Module protocol: 
 **Update codes** (prefix `U` like `U_PHONE_NAME`) - reading value from this type of code must be implemented as an observer even if you want to retrieve the value only once,
 
-**Get codes** (prefix `G_...`) - no known examples for the Bluetooth module,
+**Get codes** (prefix `G`) - no known examples for the Bluetooth module,
 
 **Command codes** (prefix `C` like `C_DIAL`) - commands changing module state, doing some action.
 
 
-*Codes reference*: Decompiled APKs (mostly `com.syu` id family).
+*Codes reference*: Decompiled APKs (mainly `com.syu.bt` and `com.syu.ms`).
 
 ### Code reversing 
-DUDU firmware uses Tencent Legu encryption in its APKs, so statically analyzing it's not easy in that case; it's better to decompile (to analyse) firmware from other FYT-based manufacturers
+DUDU firmware uses Tencent Legu encryption in its APKs, so statically analyzing it is almost impossible; it's better to reverse firmware files from other FYT-based manufacturers, IPC communication is the same.
