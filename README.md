@@ -1,8 +1,9 @@
 # fyt-dialer 
-Android dialer role app for FYT-series head units (like DUDU Auto with UIS7870/UIS7862S SoC).
+Android dialer role app for FYT-series head units with UIS7870/UIS7862S SoC (like DUDU Auto)
 
-Redirects the standard Android-invoked dial requests to the Bluetooth module (in fact, there are two Bluetooth modules in these devices; we're referring here to the non-Android one that handles HFP headsets) and the system-installed `com.syu.bt` app, which initiates the  call using your connected smartphone using the `cmd 7 strs=[phoneNumber]` command
+Redirects the standard Android-invoked dial requests to the Bluetooth module (in fact, there are two Bluetooth modules in these devices; we're referring here to the non-Android one that handles HFP headsets) and the system-installed `com.syu.bt` app, which initiates the  call using your connected smartphone using the `cmd 7 strs=[$phoneNumber]` command.
 
+Note: **Both the phone and the head unit must have their contact lists synchronized** so that both Gemini and the Bluetooth app can see the specified contact. 
 
 Below is an example of making a voice call using Google Gemini:
 <video src="https://github.com/user-attachments/assets/7f7666b2-b544-4e7d-a3c9-df029d7bb3bb"></video>
@@ -34,4 +35,4 @@ Beware: Kotlin isn't my first-choice language (or even my second), and I've neve
 *Codes reference*: Decompiled APKs (mainly `com.syu.bt` and `com.syu.ms`).
 
 ### Code reversing 
-DUDU firmware uses Tencent Legu encryption in its APKs, so statically analyzing it is almost impossible; it's better to reverse firmware files from other FYT-based manufacturers, IPC communication is the same.
+DUDU firmware uses Tencent Legu encryption in its APKs, so statically analyzing it is almost impossible; it's better to reverse firmware files from other FYT-based manufacturers; IPC communication is the same.
