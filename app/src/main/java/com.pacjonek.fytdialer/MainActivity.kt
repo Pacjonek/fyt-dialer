@@ -27,9 +27,9 @@ class MainActivity : Activity() {
             return
         }
         if(isSyuMsAvailable(this)){
-            Toast.makeText(this, "SyuMs service detected so it's probably FYT head unit", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "SYU MS Service detected so it's probably FYT head unit", Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(this, "⛔ I don't see SyuMs service. It looks like it's not the FYT-based head unit. Exiting...", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "⛔ I don't see the SYU MS service. It looks like it's not the FYT-based head unit. Exiting...", Toast.LENGTH_LONG).show()
             finish()
             return
         }
