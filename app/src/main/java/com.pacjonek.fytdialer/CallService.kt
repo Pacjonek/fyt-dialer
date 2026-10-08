@@ -33,19 +33,20 @@ class CallService : InCallService() {
 
         fun dialUsingBluetoothHfp(context: Context, phoneNumber: String){
             val bluetoothModule = BluetoothModule.get(context)
-            bluetoothModule.requestPhoneName { phoneName ->
-                if(phoneName != null){
-                    val phoneNameMessage = "📲 Calling with HFP using '$phoneName'"
-                    Toast.makeText(context, phoneNameMessage, Toast.LENGTH_LONG).show()
-                }
-            }
             bluetoothModule.dialNumber(phoneNumber) { success ->
                 val dialMessage = "Dial request ${if (success) "delivered" else "failed"}"
                 Log.d(TAG, dialMessage)
                 if(!success){
                     Toast.makeText(context, dialMessage, Toast.LENGTH_LONG).show()
+                } else {
+                    bluetoothModule.requestPhoneName { phoneName ->
+                        if(phoneName != null){
+                            val phoneNameMessage = "📲 Calling with HFP using '$phoneName'"
+                            Toast.makeText(context, phoneNameMessage, Toast.LENGTH_LONG).show()
+                        }
+                        bluetoothModule.close()
+                    }
                 }
-                bluetoothModule.close()
             }
         }
 
