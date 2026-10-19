@@ -10,7 +10,7 @@ import android.os.RemoteException
  * Minimal replica of the FYT `com.syu.ipc.IRemoteModule` binder interface.
  * One instance per FYT module (module ids: MAIN = 0, BT = 2, CANBUS = 7, ...)
  */
-interface IRemoteModule : IInterface {
+interface IRemoteModule: IInterface {
 
     @Throws(RemoteException::class)
     fun cmd(cmdCode: Int, ints: IntArray?, flts: FloatArray?, strs: Array<String?>?)
@@ -72,8 +72,8 @@ interface IRemoteModule : IInterface {
             }
         }
 
-        private class Proxy constructor(private val mRemote: IBinder) : IRemoteModule {
-            override fun asBinder(): IBinder = mRemote
+        private class Proxy constructor(private val remoteModule: IBinder) : IRemoteModule {
+            override fun asBinder(): IBinder = remoteModule
 
             @Throws(RemoteException::class)
             override fun cmd(cmdCode: Int, ints: IntArray?, flts: FloatArray?, strs: Array<String?>?) {
@@ -162,7 +162,11 @@ interface IRemoteModule : IInterface {
             const val TRANSACTION_unregister = 4
             const val TRANSACTION_getDescriptor = Binder.INTERFACE_TRANSACTION
 
-            // const val REGISTER_NOTIFY_FLAG = 1
+            /**
+            * Request to retrieve the current value (even without any value update)
+            */
+            const val UPDATE_SYNC_VALUE_FLAG = 1
+            
 
             fun asInterface(obj: IBinder?): IRemoteModule? {
                 if (obj == null) return null
